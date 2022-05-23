@@ -36,16 +36,16 @@ const sha256 = data => {
 };
 
 /**
- * Finds the index of the hash in the leaf hash list of the merkle tree
+ * Finds the index of the hash in the leaf hash list of the Merkle tree
  * and verifies if it's a left or right child by checking if its index is
  * even or odd. If the index is even, then it's a left child, if it's odd,
  * then it's a right child.
  * @param {string} hash 
- * @param {Array<Array<string>>} MerkleTree 
+ * @param {Array<Array<string>>} merkleTree 
  * @returns {string} direction
  */
-const getLeafNodeDirectionInMerkleTree = (hash, MerkleTree) => {
-    const hashIndex = MerkleTree[0].findIndex(h => h === hash);
+const getLeafNodeDirectionInMerkleTree = (hash, merkleTree) => {
+    const hashIndex = merkleTree[0].findIndex(h => h === hash);
     return hashIndex % 2 === 0 ? LEFT : RIGHT;
 };
 

@@ -120,7 +120,7 @@ Bitcoin, for example, converts the concatenated hash to binary first, before has
 Bitcoin also uses a double sha256 hash, something like:
 
 ```js
-    const result = sha256(sha245(binaryOfTheConcatenatedPairOfHashes))
+    const result = sha256(sha256(binaryOfTheConcatenatedPairOfHashes))
 ```
 
 I'm going to keep our implementation as simple as possible, just to try to see and understand the concept easily, just the bare minimum.
@@ -208,7 +208,7 @@ Define a utility function to check if a list of hashes has an odd length, and if
 
 ```js
 /**
- * If the hashes length is not even, then it copies the last hashes and adds it to the
+ * If the hashes length is not even, then it copies the last hash and adds it to the
  * end of the array, so it can be hashed with itself.
  * @param {Array<string>} hashes
  */
@@ -384,7 +384,7 @@ Let's now generate the Merkle Proof structure:
  * Generates the Merkle proof by first creating the Merkle tree,
  * and then finding the hash index in the tree and calculating if it's a 
  * left or right child (since the hashes are calculated in pairs, 
- * hash at index 0 would be a left child, hash at index 1 would be a right child.
+ * the hash at index 0 would be a left child, the hash at index 1 would be a right child.
  * Even indices are left children, odd indices are right children),
  * then it finds the sibling node (the one needed to concatenate and hash it with the child node)
  * and adds it to the proof, with its direction (left or right)
